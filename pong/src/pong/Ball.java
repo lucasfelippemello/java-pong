@@ -10,7 +10,7 @@ public class Ball {
 	public int width, height;
 	
 	public double dx, dy;
-	public double speed = 1.6;
+	public double speed = 1.7;
 	
 	public Ball(int x, int y) {
 		this.x = x;
@@ -18,8 +18,9 @@ public class Ball {
 		this.width = 4;
 		this.height = 4;
 		
-		dx = new Random().nextGaussian();
-		dy = new Random().nextGaussian();
+		int angle = new Random().nextInt(120-45)+45+1;		
+		dx = Math.cos(Math.toRadians(angle));
+		dy = Math.sin(Math.toRadians(angle));
 	}
 
 	public void tick() {
@@ -45,9 +46,17 @@ public class Ball {
 		Rectangle boundsEnemy = new Rectangle((int)Game.enemy.x, (int)Game.enemy.y, Game.enemy.width, Game.enemy.height);
 		
 		if(bounds.intersects(boundsPlayer)) {
+			int angle = new Random().nextInt(120-45)+45+1;		
+			dx = Math.cos(Math.toRadians(angle));
+			dy = Math.sin(Math.toRadians(angle));
+			if(dy > 0)
 			dy*=-1;
 		}
 		else if(bounds.intersects(boundsEnemy)) {
+			int angle = new Random().nextInt(120-45)+45+1;		
+			dx = Math.cos(Math.toRadians(angle));
+			dy = Math.sin(Math.toRadians(angle));
+			if(dy < 0)
 			dy*=-1;
 		}
 		

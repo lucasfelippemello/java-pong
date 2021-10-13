@@ -16,9 +16,8 @@ public class Enemy {
 		}
 	
 		public void tick() {
-			x+= (Game.ball.x - x - 6) * 0.4;
-			
-			
+			x+= (Game.ball.x - x - 6) * 0.07;
+						
 			}
 		
 	
